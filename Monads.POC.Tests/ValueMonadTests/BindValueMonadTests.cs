@@ -1,4 +1,4 @@
-using Monads.POC.Common.Monads.Implementations;
+using Monads.POC.Common.Monads.MonadImplementations;
 using NUnit.Framework;
 using System;
 
