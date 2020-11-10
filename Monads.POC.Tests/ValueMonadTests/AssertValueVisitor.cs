@@ -6,10 +6,17 @@ using System.Text;
 
 namespace Monads.POC.Tests.ValueMonadTests
 {
-    public class AssertValueVisitor<TValue> : IMonadVisitor<TValue, Boolean>
+    public class AssertValueVisitor<TValue> : IMonadVisitorWithDefault<TValue, Boolean>
     {
         public TValue ExpectedValue { get; set; }
         public Boolean AreEqual { get; set; }
+
+        public Boolean VisitDefault()
+        {
+            Assert.Fail();
+
+            return false;
+        }
 
         public Boolean VisitValue(TValue value)
         {
