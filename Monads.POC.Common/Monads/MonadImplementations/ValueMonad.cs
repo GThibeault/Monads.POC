@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Monads.POC.Common.Monads.Implementations
+namespace Monads.POC.Common.Monads.MonadImplementations
 {
     public class ValueMonad<TValue> : IMonad<TValue>
     {
