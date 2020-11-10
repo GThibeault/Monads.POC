@@ -16,7 +16,7 @@ namespace Monads.POC.Tests.ValueMonadTests
         {
             var firstVal = 1;
             var firstMonad = new ValueMonad<Int32>(firstVal);
-            var secondMonad = firstMonad.Bind(val => new ValueMonad<Int32>(firstVal + 1));
+            var secondMonad = firstMonad.Bind(val => new ValueMonad<Int32>(val + 1));
 
             var asserterVisitor = new AssertValueVisitor<Int32>
             {
@@ -32,7 +32,7 @@ namespace Monads.POC.Tests.ValueMonadTests
         {
             var firstVal = 1;
             var firstMonad = new ValueMonad<Int32>(firstVal);
-            var secondMonad = firstMonad.Bind(val => new ValueMonad<Int32>(firstVal + 1));
+            var secondMonad = firstMonad.Bind(val => new ValueMonad<Int32>(val + 1));
 
             var asserterVisitor = new AssertValueVisitor<Int32>
             {
