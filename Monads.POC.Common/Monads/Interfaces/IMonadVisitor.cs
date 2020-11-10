@@ -7,5 +7,6 @@ namespace Monads.POC.Common.Monads.Interfaces
     public interface IMonadVisitor<TValue, TReturn>
     {
         public TReturn VisitValue(TValue value);
+        public TReturn VisitError(String errorMessage);
     }
 }
