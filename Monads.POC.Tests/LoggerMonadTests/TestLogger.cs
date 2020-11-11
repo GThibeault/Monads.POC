@@ -8,7 +8,7 @@ namespace Monads.POC.Tests.LoggerMonadTests
     #pragma warning disable CA1062 // Validate arguments of public methods
     public class TestLogger : ILogger
     {
-        public ICollection<String> LoggedValues { get; }
+        public IList<String> LoggedValues { get; }
 
         public TestLogger()
         {
