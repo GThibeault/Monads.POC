@@ -5,9 +5,8 @@ using System.Text;
 
 namespace Monads.POC.Tests.LoggerMonadTests
 {
-    public class NullVisitor<TValue> : IMonadVisitor<TValue, Boolean>
+    public class NullVisitor<TValue> : IMonadVisitorWithDefault<TValue, Boolean>
     {
-        public Boolean VisitError(String errorMessage) => true;
-        public Boolean VisitValue(TValue value) => true;
+        public Boolean VisitDefault() => true;
     }
 }
