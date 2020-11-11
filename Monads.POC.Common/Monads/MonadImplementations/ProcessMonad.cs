@@ -15,7 +15,7 @@ namespace Monads.POC.Common.Monads.MonadImplementations
         public Guid ProcessId { get; }
         protected IMonad<TValue> InnerMonad { get; }
 
-        public ProcessMonad(IMonad<TValue> innerMonad = null, Guid? processId = null)
+        public ProcessMonad(IMonad<TValue> innerMonad, Guid? processId = null)
         {
             ProcessId = processId ?? Guid.NewGuid();
             InnerMonad = innerMonad;
@@ -39,7 +39,7 @@ namespace Monads.POC.Common.Monads.MonadImplementations
         /// <typeparam name="TNext">The type of the returned monad.</typeparam>
         /// <param name="sequenceFunc">Function to be executed, returning a monad to be wrapped.</param>
         /// <returns>A new ProcessMonad with the result of the function's execution as its inner monad.</returns>
-        public static IMonad<TNext> With<TNext>(Func<IMonad<TNext>> sequenceFunc)
+        public static ProcessMonad<TNext> With<TNext>(Func<IMonad<TNext>> sequenceFunc)
         {
             IMonad<TNext> nextMonad = sequenceFunc();
 
