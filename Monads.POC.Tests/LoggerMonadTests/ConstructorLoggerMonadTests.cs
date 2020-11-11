@@ -42,5 +42,18 @@ namespace Monads.POC.Tests.LoggerMonadTests
             Assert.IsTrue(logger.LoggedValues.Single().Contains("somestring", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(logger.LoggedValues.Single().Contains("error", StringComparison.InvariantCultureIgnoreCase));
         }
+
+        [Test]
+        public void ConstructorWithUnauthorizedMonadIsProperlyLogged()
+        {
+            var logger = new TestLogger();
+
+            _ = new LoggerMonad<Int32>(new UnauthorizedMonad<Int32>(), logger);
+
+            Assert.IsNotNull(logger.LoggedValues);
+            Assert.AreEqual(1, logger.LoggedValues.Count);
+            Assert.IsTrue(logger.LoggedValues.Single().Contains("construct", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(logger.LoggedValues.Single().Contains("unauthorized", StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace Monads.POC.Tests.LoggerMonadTests
         }
 
         [Test]
-        public void ConstructorWithErrorMonadIsProperlyLogged()
+        public void BindWithErrorMonadIsProperlyLogged()
         {
             var logger = new TestLogger();
 
@@ -41,6 +41,19 @@ namespace Monads.POC.Tests.LoggerMonadTests
             Assert.IsTrue(logger.LoggedValues[1].Contains("bind", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(logger.LoggedValues[1].Contains("#2020", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(logger.LoggedValues[1].Contains("error", StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        [Test]
+        public void BindWithUnauthorizedMonadIsProperlyLogged()
+        {
+            var logger = new TestLogger();
+
+            _ = new LoggerMonad<Int32>(new ValueMonad<Int32>(2020), logger)
+                .Bind(val => new UnauthorizedMonad<Int32>());
+
+            Assert.IsNotNull(logger.LoggedValues);
+            Assert.IsTrue(logger.LoggedValues[1].Contains("bind", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(logger.LoggedValues[1].Contains("unauthorized", StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }
