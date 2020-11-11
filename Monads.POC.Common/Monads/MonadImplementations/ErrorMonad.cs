@@ -10,7 +10,7 @@ namespace Monads.POC.Common.Monads.MonadImplementations
     /// A monad representing an error in execution.
     /// Bind operations propagate the error without calling the input functions.
     /// </summary>
-    /// <typeparam name="TValue">The undeyling type of the monad. 
+    /// <typeparam name="TValue">The underlying type of the monad. 
     /// Keep in mind no value is actually stored by the error monad, though.
     /// </typeparam>
     public class ErrorMonad<TValue> : IMonad<TValue>
