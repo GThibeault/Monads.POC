@@ -15,12 +15,12 @@ namespace Monads.POC.Common.Monads.MonadImplementations
             Value = value;
         }
 
-        public IMonad<TNext> Bind<TNext>(Func<TValue, IMonad<TNext>> bindFunc)
+        public virtual IMonad<TNext> Bind<TNext>(Func<TValue, IMonad<TNext>> bindFunc)
         {
             return bindFunc(Value);
         }
 
-        public TReturn Accept<TReturn>(IMonadVisitor<TValue, TReturn> visitor)
+        public virtual TReturn Accept<TReturn>(IMonadVisitor<TValue, TReturn> visitor)
         {
             return visitor.VisitValue(Value);
         }
