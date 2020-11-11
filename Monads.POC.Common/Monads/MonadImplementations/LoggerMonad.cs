@@ -33,7 +33,7 @@ namespace Monads.POC.Common.Monads.MonadImplementations
         {
             IMonad<TNext> nextMonad = InnerMonad.Bind(bindFunc);
 
-            String stringified = StringifyMonad(InnerMonad);
+            String stringified = StringifyMonad(nextMonad);
             Logger.LogInformation($"Binding result: <{stringified}>.");
 
             return new LoggerMonad<TNext>(nextMonad, Logger);
