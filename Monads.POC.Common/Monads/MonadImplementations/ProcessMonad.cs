@@ -21,6 +21,9 @@ namespace Monads.POC.Common.Monads.MonadImplementations
             InnerMonad = innerMonad;
         }
 
+        /// <summary>
+        /// Delegates the bind operation to the wrapped monad.
+        /// </summary>
         public IMonad<TNext> Bind<TNext>(Func<TValue, IMonad<TNext>> bindFunc)
         {
             IMonad<TNext> nextMonad = InnerMonad.Bind(bindFunc);
@@ -28,6 +31,9 @@ namespace Monads.POC.Common.Monads.MonadImplementations
             return new ProcessMonad<TNext>(nextMonad, ProcessId);
         }
 
+        /// <summary>
+        /// Delegates the accept operation to the wrapped monad.
+        /// </summary>
         public TReturn Accept<TReturn>(IMonadVisitor<TValue, TReturn> visitor)
         {
             return InnerMonad.Accept(visitor);
