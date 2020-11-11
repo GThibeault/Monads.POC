@@ -26,5 +26,12 @@ namespace Monads.POC.Tests.ProcessMonadTests
 
             return true;
         }
+
+        public Boolean VisitUnauthorized()
+        {
+            Assert.AreEqual(ExpectedMonad.Unauthorized, ExpectedMonadType);
+
+            return true;
+        }
     }
 }
