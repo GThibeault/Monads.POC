@@ -2,3 +2,6 @@
 
 # IDE0049: Simplify Names
 dotnet_style_predefined_type_for_locals_parameters_members = false:silent
+
+# IDE0062: Make local function 'static'
+csharp_prefer_static_local_function = true:none
