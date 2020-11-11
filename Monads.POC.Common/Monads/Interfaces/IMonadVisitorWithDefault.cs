@@ -14,6 +14,7 @@ namespace Monads.POC.Common.Monads.Interfaces
     {
         TReturn IMonadVisitor<TValue, TReturn>.VisitValue(TValue value) => VisitDefault();
         TReturn IMonadVisitor<TValue, TReturn>.VisitError(String errorMessage) => VisitDefault();
+        TReturn IMonadVisitor<TValue, TReturn>.VisitUnauthorized() => VisitDefault();
 
         /// <summary>
         /// Default visit called when a specific visit type is not implemented.

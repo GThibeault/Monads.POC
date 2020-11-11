@@ -22,5 +22,10 @@ namespace Monads.POC.Common.Monads.Interfaces
         /// </summary>
         /// <param name="errorMessage">The propagated error message.</param>
         public TReturn VisitError(String errorMessage);
+
+        /// <summary>
+        /// Visit for an UnauthorizedMonad.
+        /// </summary>
+        public TReturn VisitUnauthorized();
     }
 }
