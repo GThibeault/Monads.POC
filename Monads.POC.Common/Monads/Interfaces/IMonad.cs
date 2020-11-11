@@ -13,14 +13,18 @@ namespace Monads.POC.Common.Interfaces
     /// 
     /// Several aspects of execution can be encapsulated in monads, greatly reducing boilerplate code in business logic.
     /// 
+    /// Examples of monads provided by later versions of C# are nullable value types.
+    /// The type TValue? is a monad over the underlying type TValue, with the null-conditional operator (?.) implementing the bind operation.
+    /// The underlying value is extracted through the null-coalescing operator (??) rather than the visitor pattern favored in this solution.
+    /// 
     /// Monads also provide far stronger compile-time guarantees than traditional imperative programming.
-    /// In many cases, monadic code compiling ensures certain runtime behavior won't happen, such as attempting to access a null or erroroneous value.
+    /// In many cases, the fact that monadic code compiles ensures certain runtime behavior won't happen, such as attempting to access a null or erroroneous value.
     /// 
     /// In functional programming, Monads are required to provide a "return" method (with a signature similar to static IMonad<TValue> Return(TValue value)) to create a monadic value from a plain one.
     /// In this scenario, each monad implementation is left to define its own constructor, more closely following OOP principles.
     /// Consider adding the return method to the interface if more traditional FP monadic functionality is desired.
     /// 
-    /// Another possible addition to the interface is a "sequence" method, with similar functionality to "bind" but discarding the wrapped value.
+    /// A common addition to the interface is a "sequence" method, with similar functionality to "bind" but discarding the wrapped value.
     /// Its signature would be similar to IMonad<TNext> Sequence<TNext>(Func<IMonad<TNext>> sequenceFunc).
     /// 
     /// See https://en.wikipedia.org/wiki/Monad_%28functional_programming%29 for more info.
