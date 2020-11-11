@@ -7,10 +7,10 @@ using System.Text;
 namespace Monads.POC.Common.Monads.MonadImplementations
 {
     /// <summary>
-    /// Functions like a ValueMonad, but wraps the bind execution in a try/catch block.
-    /// If an exception is caught, an ErrorMonad with the exception message as its error is returned.
+    /// A monad wrapping a value (like the base ValueMonad), but encasing the bind execution within a try/catch block.
+    /// If an exception is caught, an ErrorMonad is returned with the exception message as its error.
     /// </summary>
-    /// <typeparam name="TValue">The type of the underlying value.</typeparam>
+    /// <typeparam name="TValue">The type of the wrapped value.</typeparam>
     public class SafeValueMonad<TValue> : ValueMonad<TValue>
     {
         public SafeValueMonad(TValue value) : base(value) {}
