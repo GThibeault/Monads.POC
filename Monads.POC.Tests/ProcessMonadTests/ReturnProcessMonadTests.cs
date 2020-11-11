@@ -49,5 +49,18 @@ namespace Monads.POC.Tests.ProcessMonadTests
                 .With(() => new ErrorMonad<Int32>("some err"))
                 .Accept(asserterVisitor);
         }
+
+        [Test]
+        public void ReturnRespectsInnerUnauthorizedMonad()
+        {
+            var asserterVisitor = new AssertProcessVisitor<Int32>
+            {
+                ExpectedMonadType = ExpectedMonad.Unauthorized,
+            };
+
+            ProcessMonad<Int32>
+                .With(() => new UnauthorizedMonad<Int32>())
+                .Accept(asserterVisitor);
+        }
     }
 }

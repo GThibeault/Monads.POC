@@ -10,6 +10,7 @@ namespace Monads.POC.Tests.ProcessMonadTests
     {
         Invalid,
         Value,
-        Error
+        Error,
+        Unauthorized
     }
 }
